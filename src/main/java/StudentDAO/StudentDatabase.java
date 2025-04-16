@@ -32,14 +32,14 @@ public class StudentDatabase {
 		pst.setString(2, sd.getName());
 		pst.setInt(3, sd.getTamil());
 		pst.setInt(4, sd.getEnglish());
-		pst.setInt(5, sd.getPhysice());
+		pst.setInt(5, sd.getPhysics());
 		pst.setInt(6, sd.getChemistry());
 		pst.setInt(7, sd.getMaths());
 		return pst.executeUpdate();
 
 	}
 
-	public static StudentDetails findstudent(int id) throws ClassNotFoundException, SQLException {
+	public static StudentDetails findStudent(int id) throws ClassNotFoundException, SQLException {
 		Connection con = getConnection();
 		PreparedStatement pst = con.prepareStatement("select * from studentdatabase where id=?");
 		pst.setInt(1, id);
@@ -81,8 +81,8 @@ public class StudentDatabase {
 	public static boolean findAdmin(String email, String Password) throws ClassNotFoundException, SQLException {
 		Connection con = getConnection();
 		PreparedStatement pst = con.prepareStatement("select * from admin where email=? and password=?");
-		pst.setString(3, email);
-		pst.setString(5, Password);
+		pst.setString(1, email);
+		pst.setString(2, Password);
 		ResultSet rs = pst.executeQuery();
 		if (rs.next()) {
 			return true;
@@ -92,17 +92,33 @@ public class StudentDatabase {
 
 	}
 
-	public static int saveAdmin(int id, String name, String email, int contact, String password)
+	public static int saveAdmin(int id, String name, String email, long contact, String password)
 			throws ClassNotFoundException, SQLException {
 		Connection con = getConnection();
 		PreparedStatement pst = con.prepareStatement("insert into admin values(?,?,?,?,?)");
 		pst.setInt(1, id);
 		pst.setString(2, name);
 		pst.setString(3, email);
-		pst.setInt(4, contact);
+		pst.setLong(4, contact);
 		pst.setString(5, password);
+
 		return pst.executeUpdate();
 
+	}
+
+	public static int updateStudent(int id, String name, int tamil, int english, int physics, int chemistry, int maths)
+			throws ClassNotFoundException, SQLException {
+		Connection con = getConnection();
+		PreparedStatement pst = con.prepareStatement(
+				"update studentdatabase set name=?,tamil=?,english=?,physics=?,chemistry=?,maths=? where id=?");
+		pst.setString(1, name);
+		pst.setInt(2, tamil);
+		pst.setInt(3, english);
+		pst.setInt(4, physics);
+		pst.setInt(5, chemistry);
+		pst.setInt(6, maths);
+		pst.setInt(7, id);
+		return pst.executeUpdate();
 	}
 
 }

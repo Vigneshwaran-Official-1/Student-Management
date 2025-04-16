@@ -4,9 +4,9 @@ public class AdminDetails {
 	private int id;
 	private String name;
 	private String email ;
-	private int contact ;
+	private long contact ;
 	private String password;
-	public AdminDetails(int id, String name, String email, int contact, String password) {
+	public AdminDetails(int id, String name, String email, long contact, String password) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -32,10 +32,10 @@ public class AdminDetails {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getContact() {
+	public long getContact() {
 		return contact;
 	}
-	public void setContact(int contact) {
+	public void setContact(long contact) {
 		this.contact = contact;
 	}
 	public String getPassword() {

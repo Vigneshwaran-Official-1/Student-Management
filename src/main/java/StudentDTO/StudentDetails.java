@@ -5,17 +5,17 @@ public class StudentDetails {
 	private String name;
 	private int tamil;
 	private int english;
-	private int physice;
+	private int physics;
 	private int chemistry;
 	private int maths;
 	
-	public StudentDetails(int id, String name, int tamil, int english, int physice, int chemistry, int maths) {
+	public StudentDetails(int id, String name, int tamil, int english, int physics, int chemistry, int maths) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.tamil = tamil;
 		this.english = english;
-		this.physice = physice;
+		this.physics = physics;
 		this.chemistry = chemistry;
 		this.maths = maths;
 	}
@@ -52,12 +52,12 @@ public class StudentDetails {
 		this.english = english;
 	}
 
-	public int getPhysice() {
-		return physice;
+	public int getPhysics() {
+		return physics;
 	}
 
 	public void setPhysice(int physice) {
-		this.physice = physice;
+		this.physics = physice;
 	}
 
 	public int getChemistry() {
